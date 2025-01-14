@@ -5,7 +5,7 @@ class CreateOrderDetails < ActiveRecord::Migration[6.1]
       t.integer :cooking_status, null: false, default: ""
       t.integer :price, null: false, default: ""
       t.timestamps
-
+aa
     end
   end
 end
