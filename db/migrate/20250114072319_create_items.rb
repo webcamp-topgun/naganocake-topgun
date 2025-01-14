@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.text :caption, null: false, default: ""
       t.integer :price, null: false, default: ""
       t.boolean :is_active, null: false, default: ""
-      t.integer :amount, null: false, default: ""
+
 
     end
   end
