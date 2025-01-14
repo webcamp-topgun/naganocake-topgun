@@ -5,6 +5,8 @@ class CreateOrderDetails < ActiveRecord::Migration[6.1]
       t.integer :cooking_status, null: false, default: ""
       t.integer :price, null: false, default: ""
       t.timestamps
+
+      enum cooking_status: { not_started: 0, pending_production: 1, in_production: 2, production_completed: 3 }
     end
   end
 end
