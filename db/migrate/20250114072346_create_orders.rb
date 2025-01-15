@@ -11,7 +11,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :postage, null: false
       t.integer :payment_method, null: false
       t.integer :total_payment, null: false
-      t.integer :status, null: false, default: "0" 
+      t.integer :status, null: false, default: 0
     end
   end
 end
