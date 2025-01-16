@@ -37,7 +37,12 @@
 
     <div class="field">
       <%= f.label :住所 %>
-      <%= f.text_field :postal_code, placeholder: "0000000" %>
+      <%= f.text_field :address, placeholder: "0000000" %>
+    </div>
+
+      <div class="field">
+      <%= f.label :電話番号 %>
+      <%= f.text_field :phone_number, placeholder: "0000000" %>
     </div>
 
   <div class="field">
@@ -45,7 +50,7 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :encrypted_password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
