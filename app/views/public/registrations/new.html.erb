@@ -29,6 +29,17 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
   </div>
 
+
+    <div class="field">
+      <%= f.label :郵便番号 %>
+      <%= f.text_field :postal_code, placeholder: "0000000" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :住所 %>
+      <%= f.text_field :postal_code, placeholder: "0000000" %>
+    </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
