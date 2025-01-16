@@ -24,7 +24,6 @@
           </th>
         </tr>
 
-        <% @items.each do |item| %>
         <tr>
           <td>
           </td>
@@ -38,7 +37,7 @@
           <%= link_to '削除する', @cart_items,method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-danger" %>
           </td>
         </tr>
-        <% end %>
+
       </table>
      <%= link_to '買い物を続ける', root_path, class: "btn btn-sm btn-primary" %>
      <table>
