@@ -23,26 +23,26 @@
     <%= f.text_field :first_name_kana, placeholder: "ミチコ" %>
   </div>
 
-<p>メールアドレス</p>
+<%# <p>メールアドレス</p> %>
   <div class="field">
-    <%# <%= f.label :メールアドレス %>
+    <%= f.label :メールアドレス
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
   </div>
 
 
     <div class="field">
-      <%= f.label :郵便番号 %>
+      <%= f.label :郵便番号（ハイフンなし） %>
       <%= f.text_field :postal_code, placeholder: "0000000" %>
     </div>
 
     <div class="field">
       <%= f.label :住所 %>
-      <%= f.text_field :address, placeholder: "0000000" %>
+      <%= f.text_field :address, placeholder: "" %>
     </div>
 
       <div class="field">
-      <%= f.label :電話番号 %>
-      <%= f.text_field :phone_number, placeholder: "0000000" %>
+      <%= f.label :電話番号（ハイフンなし） %>
+      <%= f.text_field :phone_number, placeholder: "0000000000" %>
     </div>
 
   <div class="field">
