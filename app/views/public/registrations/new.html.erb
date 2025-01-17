@@ -16,56 +16,91 @@
         </div>
       </td>
   </tr>
-</table>
-      <p>フリガナ</p>
-        <div class="field">
+  <tr>
+      <td><p>フリガナ</p></td>
+        <td><div class="field">
           <%= f.label :"(セイ)" %>
           <%= f.text_field :last_name_kana, placeholder: "レイワ" %>
         </div>
-
-          <div class="field">
+        </td>
+        <td><div class="field">
           <%= f.label :"(メイ)" %>
           <%= f.text_field :first_name_kana, placeholder: "ミチコ" %>
         </div>
+        </td>
+  </tr>
 
-
-        <div class="field">
+  <tr>
+        <td>
+          <div class="field">
           <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
-        </div>
-
-
-          <div class="field">
-            <%= f.label :郵便番号（ハイフンなし） %>
-            <%= f.text_field :postal_code, placeholder: "0000000" %>
+        </td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
           </div>
-
+        </td>
+  </tr>
+  <tr>
+        <td>
           <div class="field">
+          <%= f.label :郵便番号（ハイフンなし） %>
+        </td>
+        <td>
+          <%= f.text_field :postal_code, placeholder: "0000000" %>
+          </div>
+        </td>
+  </tr>
+  <tr>
+          <td>
+            <div class="field">
             <%= f.label :住所 %>
+          </td>
+          <td>
             <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", style: "width: 500px;" %>
           </div>
-
+          </td>
+  </tr>
+  <tr>
+          <td>
             <div class="field">
             <%= f.label :電話番号（ハイフンなし） %>
+          </td>
+          <td>
             <%= f.text_field :phone_number, placeholder: "0000000000" %>
           </div>
-
-        <div class="field">
+          </td>
+  </tr>
+  <tr>
+        <td>
+          <div class="field">
           <%= f.label :password %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %>
+        </td>
+        <td>
           <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
+          </div>
+        </td>
+  </tr>
+  <tr>
+        <td>
+          <div class="field">
+          <%= f.label :password_confirmation %>
+        </td>
+        <td>
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
+          </div>
+        </td>
+  </tr>
+  <tr>
+        <td></td>
+        <td>
+          <div class="actions">
+          <%= f.submit "新規登録", class:"btn btn-success" %>
+          </div>
+        </td>
+  </tr>
+  </table>
   <% end %>
 
 <%= render "public/shared/links" %>
