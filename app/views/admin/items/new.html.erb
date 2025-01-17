@@ -23,10 +23,10 @@
   </div>
   <div class="item-status" >
     <%= f.label :is_active, '販売ステータス' %>
-    <%= f.check_box :is_active, {checked: true, value: "true" } %>
-    <%= f.label :is_active, '販売中' %>
-    <%= f.check_box :is_active, {checked: false, value: "false" } %>
-    <%= f.label :is_active, '販売停止中' %>
+    <%= f.radio_button :is_active, :true %>
+    <%= f.label :is_active_true, '販売中' %>
+    <%= f.radio_button :is_active, :false %>
+    <%= f.label :is_active_false, '販売停止中' %>
   </div>
     <%= f.submit "新規登録", class: "btn btn-success" %>
 <% end %>

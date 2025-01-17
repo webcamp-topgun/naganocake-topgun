@@ -1,6 +1,6 @@
 <h1>商品詳細</h1>
 
-<%= image_tag Item.image, size: "200x200" %>
+<%= image_tag @item.image, size: "200x200" %>
 
 <table>
   <tr>
@@ -8,7 +8,7 @@
     <td><%= @item.name %></td>
   </tr>
   <tr>
-    <td>商品説明<td>
+    <td>商品説明</td>
     <td><%= @item.caption %></td>
   </tr>
   <tr>
@@ -19,7 +19,7 @@
     <td>税込み価格<br>
         （税抜き価格）
     </td>
-    <td><%= @tax_include_price %><%= (@item.price) %>円</td>
+    <td><%= "#{@tax_include_price} (#{@item.price}円)" %></td>
   </tr>
   <tr>
     <td>販売ステータス</td>
