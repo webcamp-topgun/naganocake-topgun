@@ -12,12 +12,8 @@
     </div>
 
     <%= form_with model: @item, url: cart_items_path(current_customer) do |f| %>
-      <span style="padding-right: 30px;"> 
-        <%= f.select :amount, *[1..10] %>
-      </span>
-      <span style="padding-left: 30px;">
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      </span>
+      <span style="padding-right: 60px;"> <%= f.select :amount, *[1..10] %></span>
+      <%= f.submit "カートに入れる", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
