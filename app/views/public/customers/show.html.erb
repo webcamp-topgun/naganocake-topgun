@@ -1,7 +1,8 @@
 <h1>マイページ</h1>
 <h2>登録情報</h2>
+<%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %>
 
-<table>
+<table border ="1">
   <tr>
     <td>氏名</td>
     <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
@@ -12,29 +13,29 @@
   </tr>
   <tr>
     <td>郵便番号</td>
-    <td><%= @addresses.postal_code %>
+    <td><%= @addresses.postal_code %></td>
   </tr>
   <tr>
     <td>住所</td>
-    <td><%= @addresses.address %>
+    <td><%= @addresses.address %></td>
   </tr>
   <tr>
     <td>電話番号</td>
-    <<td><%= @customer.phone_number %>
+    <td><%= @customer.phone_number %></td>
   </tr>
   <tr>
     <td>メールアドレス</td>
-    <%# <<td><%= @customer.e-mail %>
+    <td><%= @customer.email %></td>
   </tr>
 </table>
 
-<%= link_to "編集する", customers_information_edit_path, class: "edit-button" %>
+
 
 <h2>配送先</h2>
-<%= link_to "一覧を見る", addresses_path, class: "edit-button" %>
+<%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
 
 <h2>注文一覧</h2>
-<%= link_to "一覧を見る", orders_path, class: "edit-button" %>
+<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
 
 
-<p>Find me in app/views/public/customers/show.html.erb</p>
+

@@ -1,2 +1,48 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h2>会員情報編集</h2>
+
+<form action="/customers_information_update" method="PATCH">
+  <table>
+    <tr>
+      <td>氏名</td>
+      <td>
+        <input type="text" name="last_name" value="<%= @customer.last_name %>">
+        <input type="text" name="first_name" value="<%= @customer.first_name %>">
+      </td>
+    </tr>
+    <tr>
+      <td>フリガナ</td>
+      <td>
+        <input type="text" name="last_name_kana" value="<%= @customer.last_name_kana %>">
+        <input type="text" name="first_name_kana" value="<%= @customer.first_name_kana %>">
+      </td>
+    </tr>
+        <tr>
+      <td>郵便番号</td>
+      <td>
+        <input type="string" name="pastal_code" value="<%= @addresses.postal_code %>">
+      </td>
+    </tr>
+        <tr>
+      <td>住所</td>
+      <td>
+        <input type="string" name="address" value="<%= @addresses.address %>">
+      </td>
+    </tr>
+
+    <tr>
+      <td>電話番号</td>
+      <td>
+        <input type="string" name="phone_number" value="<%= @customer.phone_number %>">
+      </td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td>
+        <input type="string" name="phone_number" value="<%= @customer.email %>">
+      </td>
+    </tr>
+
+  </table>
+  <button type="submit" class="btn btn-success">編集内容を保存</button>
+    <button type="submit" class="btn btn-danger">退会する</button>
+</form>
