@@ -10,13 +10,8 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if params[:is_active] == "true"
-      params[:item][:is_active] = true
-    else
-      params[:item][:is_active] = false
-    end
     @item.save
-    redirect_to admin_items_path
+    redirect_to admin_item_path(@item.id)
   end
 
   def show
