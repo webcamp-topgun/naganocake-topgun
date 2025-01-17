@@ -1,2 +1,23 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div style="display: flex;">
+  <div>
+    <%= image_tag @item.image, size: "300x300" %>
+  </div>
+
+  <div>
+    <div style="font-size: 36px;"><b><%= @item.name %></b></div>
+    <div style="font-size: 36px; margin-bottom: 30px;"><%= @item.caption %></div>
+    <div style="font-size: 36px; margin-bottom: 20px;">
+      <b><%= number_to_currency(@tax_include_price, unit: "￥", precision: 0) %></b>
+      <span style="font-size: 60%;">(税込)</span>
+    </div>
+
+    <%= form_with model: @item, url: cart_items_path(current_customer) do |f| %>
+      <span style="padding-right: 30px;"> 
+        <%= f.select :amount, *[1..10] %>
+      </span>
+      <span style="padding-left: 30px;">
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      </span>
+    <% end %>
+  </div>
+</div>

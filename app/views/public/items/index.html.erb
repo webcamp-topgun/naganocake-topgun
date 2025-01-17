@@ -1,2 +1,32 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<h1>
+  商品一覧
+  <span style="font-size: 60%;">全<%= @items.count %>件</span>
+</h1>
+
+<div class="items-container">
+  <% @items.each do |item| %>
+    <div class="item">
+      <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, size: "200x200" %>
+      <% end %>
+      <div class="item-details">
+        <div><%= item.name %></div>
+        <div><%= number_to_currency((item.price * 1.1).floor, unit: "￥", precision: 0) %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%# 後ほどまとめてスタイルの記述をしたほうがいいかと思い、一旦以下にレイアウト用記述を書いています %>
+<style>
+  .items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    flex-basis: 20%;
+    margin: 10px;
+  }
+</style>

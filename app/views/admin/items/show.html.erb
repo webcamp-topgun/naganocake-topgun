@@ -1,7 +1,7 @@
 <h1>商品詳細</h1>
 
-<%= image_tag @item.image, size: "200x200" %>
-
+  <%= image_tag @item.image, size: "200x200" %>
+  
 <table>
   <tr>
     <td>商品名</td>
@@ -19,7 +19,7 @@
     <td>税込み価格<br>
         （税抜き価格）
     </td>
-    <td><%= "#{@tax_include_price} (#{@item.price}円)" %></td>
+    <td><%= "#{number_to_currency(@tax_include_price, unit: "", precision: 0)} (#{number_to_currency(@item.price, unit: "", precision: 0)}円)" %></td>
   </tr>
   <tr>
     <td>販売ステータス</td>
@@ -31,3 +31,4 @@
   </tr>
 </table>
 
+<%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>

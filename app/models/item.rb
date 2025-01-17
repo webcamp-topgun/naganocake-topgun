@@ -6,4 +6,6 @@ class Item < ApplicationRecord
 
   has_many :order_details, dependent: :destroy
   belongs_to :genre
+
+  validates :image, presence: true
 end

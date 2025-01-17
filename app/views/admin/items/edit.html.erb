@@ -1,8 +1,6 @@
 <h1>商品編集</h1>
 
-<h1>商品新規登録</h1>
-
-<%= form_with model: @item, url: edit_admin_item_path(@genre) do |f| %>
+<%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
   <div class="item-file">
     <%= f.label :商品画像, style: "width: 80px;" %>
     <%= f.file_field :image, accept: "image/*", include_blank: "ファイルを選択" %>
@@ -30,6 +28,6 @@
     <%= f.radio_button :is_active, :false %>
     <%= f.label :is_active_false, '販売停止中' %>
   </div>
-    <%= f.submit "新規登録", class: "btn btn-success" %>
+    <%= f.submit "変更を保存", class: "btn btn-success" %>
 <% end %>
 
