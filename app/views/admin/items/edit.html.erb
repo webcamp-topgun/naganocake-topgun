@@ -15,7 +15,7 @@
   </div>
   <div class="item-genre" >
     <%= f.label :ジャンル, style: "width: 80px;" %>
-    <%= f.select :genre_id, options_for_select(Genre.all.map{ |g| [g.name, g.id] }), { include_blank: "選択してください"}, {style: "width: 28ch;"} %>
+    <%= f.select :genre_id, options_for_select(Genre.all.map{ |g| [g.name, g.id] }, selected: @item.genre.id), { include_blank: "選択してください"}, {style: "width: 28ch;"} %>
   </div>
   <div class="item-price" >
     <%= f.label :税抜価格, style: "width: 80px;" %>
