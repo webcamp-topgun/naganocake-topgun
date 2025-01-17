@@ -11,7 +11,10 @@
       <span style="font-size: 60%;">(税込)</span>
     </div>
 
-    <%= form_with model: @item, url: cart_items_path(current_customer) do |f| %>
+<%# カート関係の記述が1/18.0:34現在確認できず、ユーザー登録もせずに動作確認しているため、
+カートに入れるを押すと長谷川の画面ではルーティングエラーが発生しました。現在のURL指定で商品詳細ページは表示できるかと思います %>
+
+    <%= form_with model: @item, url: cart_items_path do |f| %>
       <span style="padding-right: 60px;"> <%= f.select :amount, *[1..10] %></span>
       <%= f.submit "カートに入れる", class: "btn btn-success" %>
     <% end %>
