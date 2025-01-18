@@ -1,2 +1,22 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div style="display: flex;">
+  <div>
+    <%= image_tag @item.image, size: "300x300" %>
+  </div>
+
+  <div>
+    <div style="font-size: 36px;"><b><%= @item.name %></b></div>
+    <div style="font-size: 36px; margin-bottom: 30px;"><%= @item.caption %></div>
+    <div style="font-size: 36px; margin-bottom: 20px;">
+      <b><%= number_to_currency(@tax_include_price, unit: "￥", precision: 0) %></b>
+      <span style="font-size: 60%;">(税込)</span>
+    </div>
+
+<%# カート関係の記述が1/18.0:34現在確認できず、ユーザー登録もせずに動作確認しているため、
+カートに入れるを押すと長谷川の画面ではルーティングエラーが発生しました。現在のURL指定で商品詳細ページは表示できるかと思います %>
+
+    <%= form_with model: @item, url: cart_items_path do |f| %>
+      <span style="padding-right: 60px;"> <%= f.select :amount, *[1..10] %></span>
+      <%= f.submit "カートに入れる", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
