@@ -1,2 +1,50 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<h3>注文情報入力</h3>
+<h4>支払方法</h4>
+  <%= form_for @order do |f| %>
+    <div class="field">
+    <%= f.radio_button :payment_method, "credit_card" %>
+    <%= f.label :address, "クレジットカード" %>
+  </div>
+  <div class="field">
+    <%= f.radio_button :payment_method, "transfer" %>
+    <%= f.label :address, "銀行振込" %>
+  </div>
+  <% end %>
+<h4>お届け先</h4>
+<%= form_for @order do |f| %>
+  <div class="field">
+    <%= f.radio_button :address, "own_address" %>
+    <%= f.label :address, "ご自身の住所" %>
+  </div>
+<%= @postal_code %>
+<%= @address %>
+<%= @name %>
+  <div class="field">
+    <%= f.radio_button :address, "registered_address" %>
+    <%= f.label :address, "登録先住所から選択" %>
+  </div>
+
+  <div class="field">
+    <%= f.radio_button :address, "new_address" %>
+    <%= f.label :address, "新しいお届け先" %>
+  </div>
+
+
+  <%= form_for @order do |f| %>
+    <div class="field">
+      <%= f.label :郵便番号（ハイフンなし） %>
+      <%= f.text_field :postal_code, placeholder: "0000000", size: 20 %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :住所 %>
+      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size: 40 %>
+    </div>
+    <div class="field">
+    <%= f.label :宛名 %>
+    <%= f.text_field :name, placeholder: "令和道子", size: 20 %>
+  </div>
+  <% end %>
+  <%= link_to "確認画面へ進む",orders_confirm_path, method: :new, class: "btn btn-primary btn-sm" %>
+<% end %>
