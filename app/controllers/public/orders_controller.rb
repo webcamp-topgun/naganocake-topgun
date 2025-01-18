@@ -2,9 +2,6 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
     @order = Order.new
-    @postal_code = params[:postal_code]
-    @address = params[:address]
-    @name = params[:name]
   end
 
   def confirm
