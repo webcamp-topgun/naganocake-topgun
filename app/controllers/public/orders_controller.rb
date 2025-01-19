@@ -5,12 +5,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @order = Order.new
+    @cart_items = current_customer.cart_items
+    
   end
 
   def complete
   end
 
   def create
+    @order = Order.new
+      @order.save
+      redirect_to orders_complete_path
   end
 
   def index

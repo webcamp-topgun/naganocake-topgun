@@ -1,4 +1,6 @@
 <h1>注文情報確認</h1>
+<%= form_with model: @order,method: :post,url:orders_path do |f| %>
+
 <table>
   <tr>
     <th>
@@ -14,21 +16,25 @@
       小計
     </th>
   </tr>
+  <% @cart_items.each do |cart_item| %>
   <tr>
     <td>
-
+      <%= cart_item.name %>
     </td>
     <td>
-
+      <%= cart_item.cart_item.with_tax_price %>
     </td>
     <td>
-
+      <%= cart_item.amount %>
     </td>
     <td>
 
     </td>
   </tr>
+  <% end %>
 </table>
+
+
 <table>
   <tr>
     <th>
@@ -55,4 +61,5 @@
 <h3>支払方法</h3>
 <h3>お届け先</h3>
 
-<%= link_to "注文を確定する",orders_complete_path, method: :get, class: "btn btn-success btn-sm" %>
+  <%= f.submit "注文を確定する", class: "btn btn-success btn-sm" %>
+<% end %>
