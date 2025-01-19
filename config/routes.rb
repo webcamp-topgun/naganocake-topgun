@@ -25,9 +25,10 @@ scope module: :public do
   resources :cart_items, only: [:index, :update, :destroy, :create]
   delete "cart_items/destroy_all" => "cart_items#destroy_all"
 #ordersコントローラのルーティング
+  get "orders/complete" => "orders#complete"
   resources :orders, only: [:new, :create, :index, :show]
-  post "orders/confirm" => "orders#confirm", as: "confirm"
-  get "orders/complete" => "orders#complete", as: "complete"
+  post "orders/confirm" => "orders#confirm"
+  
 
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 end
