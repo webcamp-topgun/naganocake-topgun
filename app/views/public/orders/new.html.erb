@@ -21,7 +21,7 @@
 
   <div class="field">
     <%= f.radio_button :address, "registered_address" %>
-    <%= f.label :address, "登録先住所から選択" %>
+    <%= f.label :address, "登録先住所から選択" %><br>
     <%= f.collection_select :address_id, current_customer.addresses, :id, :full_address, prompt: "登録済住所から選択" %>
   </div>
 
@@ -48,4 +48,5 @@
     <%= f.text_field :name, placeholder: "令和道子", size: 20 %>
   </div>
   <%= f.submit "確認画面へ進む", class: "btn btn-primary btn-sm" %>
-<% end %>
+  <% end %>
+
