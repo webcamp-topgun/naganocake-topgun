@@ -8,4 +8,8 @@ class Order < ApplicationRecord
   def status_jp
     I18n.t("enums.order.status.#{status}")
   end
+
+  def full_address
+    "〒#{postal_code} #{address} #{name}"
+  end
 end
