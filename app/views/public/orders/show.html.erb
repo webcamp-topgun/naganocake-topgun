@@ -6,7 +6,7 @@
         注文日
       </th>
       <th>
-        
+        <%= @order.updated.at %>
       </th>
     </tr>
     <tr>
@@ -14,7 +14,9 @@
         配送先
       </td>
       <td>
-        
+        <%= "〒" + @order.postal_code %><br>
+        <%= @order.address %><br>
+        <%= @order.name %>
       </td>
     </tr>
     <tr>
@@ -22,7 +24,7 @@
         支払方法
       </td>
       <td>
-        
+        <%= @ordr.payment_method %>
       </td>
     </tr>
     <tr>
@@ -30,10 +32,12 @@
         ステータス
       </td>
       <td>
-        
+        <%= @order.status %>
       </td>
     </tr>
   </table>
+
+
 <p>請求情報</p>
 <table>
     <tr>
@@ -49,7 +53,7 @@
         配送料
       </td>
       <td>
-        800
+        <%= @order.postage %>
       </td>
     </tr>
     <tr>
@@ -57,10 +61,12 @@
         ご請求額
       </td>
       <td>
-        
+        <%= @order.total_payment %>
       </td>
     </tr>
   </table>
+
+
 <p>注文内容</p>
 <table>
     <tr>
@@ -68,23 +74,29 @@
         商品
       </th>
       <th>
-        
+        単価（税込）
+      </th>
+      <th>
+        個数
+      </th>
+      <th>
+        小計
       </th>
     </tr>
+    <% @order_details.each do |order_detail| %>
     <tr>
       <td>
-        
+        <%= order_detail.item.name %>
       </td>
       <td>
-        
+        <%= order_detail.item.with_tax_price %>
+      </td>
+      <td>
+        <%= order_detail.amount %>
+      </td>
+      <td>
+        <%= order_detail.amount %>
       </td>
     </tr>
-    <tr>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-    </tr>
+    <% end %>
 </table>
