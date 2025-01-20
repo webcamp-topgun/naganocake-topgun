@@ -1,6 +1,10 @@
 <div style="display: flex;">
   <div>
-    <%= image_tag @item.image, size: "300x300" %>
+  <% if @item.image.attaced? %>
+    <%= image_tag @item.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', size: "200x200" %>
+  <% end %>
   </div>
 
   <div>
