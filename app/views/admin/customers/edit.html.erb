@@ -1,6 +1,6 @@
 <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
 
-<%= form_with model: @customer, url: customers_information_path(@customer), method: :patch do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
   <table>
     <tr>
       <td>氏名</td>
@@ -32,9 +32,9 @@
       <td>会員ステータス</td>
       <td>
         <%= f.radio_button :is_active, "true" %>
-        <%= f.label :is_active_true, "有効" %>
+        <%= f.label :is_active_true, "有効",{value: :true} %>
         <%= f.radio_button :is_active, "false" %>
-        <%= f.label :is_active_false, "退会" %>
+        <%= f.label :is_active_false, "退会",{value: :false} %>
       </td>
     </tr>
     <tr>
