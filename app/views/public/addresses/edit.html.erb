@@ -1,2 +1,22 @@
-<h1>Public::Addresses#edit</h1>
+<h2>配達先編集</h2>
+
+<%= form_with model: @customer, url: addresses_path(@customer), method: :post do |f| %>
+  <table>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td>氏名</td>
+      <td><%= f.text_field :last_name %></td>
+      <td><%= f.text_field :first_name %></td>
+    </tr>
+
+
+
+
 <p>Find me in app/views/public/addresses/edit.html.erb</p>
