@@ -34,7 +34,7 @@ end
 
 
 namespace :admin do
-  root to: "admin/homes#top"
+  root to: "homes#top"
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update]
   resources :customers, only: [:index, :show, :edit, :update]
