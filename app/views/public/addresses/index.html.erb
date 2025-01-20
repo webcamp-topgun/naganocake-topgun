@@ -1,6 +1,6 @@
 <h2>配達先登録／一覧</h2>
 
-<%= form_with model: @address do |f| %>
+<%= form_with model: @address, url:addresses_path, method: :post do |f| %>
 <table>
   <tr>
         <td>
@@ -39,12 +39,29 @@
   </table>
   <% end %>
 
-<table>
-  <% @addresses.each do |address| %>
+
+
+
+
+<table border="1">
+  <thead>
   <tr>
-    <td>郵便番号</td>
-    <td><%= address.postal_code %></td>
-    
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
   </tr>
-  <% end %>
+  </thead>
+  <tbody>
+      <% @addresses.each do |address| %>
+    <tr>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td><%= link_to '編集する', edit_address_path(current_customer), class: "btn btn-success" %> 
+          <%= link_to '削除する', address_path(current_customer), method: :delete, class: "btn btn-danger" %>
+      </td>
+    </tr>
+      <% end %>
+  </tbody>
 </table>
