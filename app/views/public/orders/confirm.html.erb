@@ -19,16 +19,16 @@
   <% @cart_items.each do |cart_item| %>
   <tr>
     <td>
-      <%= cart_item.name %>
+      <%= cart_item.item.name %>
     </td>
     <td>
-      <%= cart_item.cart_item.with_tax_price %>
+      <%= cart_item.item.with_tax_price %>
     </td>
     <td>
       <%= cart_item.amount %>
     </td>
     <td>
-
+      <%= cart_item.subtotal %>
     </td>
   </tr>
   <% end %>
@@ -41,6 +41,7 @@
       送料
     </th>
     <th>
+      <%= @order.postage %>
     </th>
   </tr>
   <tr>
@@ -48,6 +49,7 @@
       商品合計
     </th>
     <td>
+      
     </td>
   </tr>
   <tr>
@@ -59,7 +61,8 @@
   </tr>
 </table>
 <h3>支払方法</h3>
+   <%= @payment_method %>
 <h3>お届け先</h3>
-
+   <%= @address %>
   <%= f.submit "注文を確定する", class: "btn btn-success btn-sm" %>
 <% end %>

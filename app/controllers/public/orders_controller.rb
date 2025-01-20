@@ -7,7 +7,9 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new
     @cart_items = current_customer.cart_items
-    
+    @order.postage = 800
+    @payment_method = @order.payment_method
+    @address = @order.address
   end
 
   def complete
@@ -20,6 +22,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.find(params[:id])
   end
 
   def show
