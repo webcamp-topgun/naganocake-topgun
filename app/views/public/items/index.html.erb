@@ -17,12 +17,22 @@
   <% end %>
 </div>
 
-<%# 後ほどまとめてスタイルの記述をしたほうがいいかと思い、一旦以下にレイアウト用記述を書いています %>
+<div class="paginate">
+  <%= paginate @items %>
+</div>
+
+
 <style>
   .items-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .paginate {
+     display: flex;
+    justify-content: center;
+    font-size: 24px;
   }
 
   .item {
