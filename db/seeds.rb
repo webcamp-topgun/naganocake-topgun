@@ -118,3 +118,18 @@ Item.create(
 ]
 )
 
+Customer.create(
+  [
+    {
+      last_name: "田中",
+      first_name: "将大",
+      last_name_kana: "タナカ",
+      first_name_kana: "マサヒロ",
+      postal_code: "3334444",
+      address: "東京都板橋区大山２ー５８",
+      phone_number: "050-1111-2222",
+      email: "ma-kun@gmail.com",
+      encrypted_password: "111111"
+    }
+  ]
+)
