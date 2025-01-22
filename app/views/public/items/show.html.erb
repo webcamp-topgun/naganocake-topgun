@@ -16,9 +16,10 @@
     </div>
 
 
-    <%= form_with model: @item, url: cart_items_path(current_customer), method: :post do |f| %>
+    <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+      <span style="padding-right: 60px;"><%= f.select :amount, *[1..10] %></span>
       <%= f.hidden_field :item_id, value: @item.id %>
-      <span style="padding-right: 60px;"> <%= f.select :amount, *[1..10] %></span>
+      
       <%= f.submit "カートに入れる", class: "btn btn-success" %>
     <% end %>
   </div>
