@@ -1,17 +1,18 @@
-<div class="container text-center">
+<div class="container justify-content-center">
   <div class="row">
-    <div class="col-10">
+    <div class="col-10 text-left pl-5">
       <h1>注文履歴詳細</h1>
-
-      <%= form_with model: @order.status, url: admin_order_path(@order), method: :patch do |f| %>
-        <table>
+    </div>
+    <div class="col-10 text-left">
+      <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
+        <table class="table table-borderless">
           <tr>
             <td><b>購入者</b></td>
             <td><%= "#{@order.customer.last_name} #{@order.customer.first_name}" %></td>
           </tr>
           <tr>
             <td><b>注文日</b></td>
-            <td><%= l @order.created_at.to_date %></td>
+            <td><%= @order.created_at.to_date %></td>
           </tr>
           <tr>
             <td><b>配送先</b></td>
@@ -23,14 +24,14 @@
           </tr>
           <tr>
             <td><b>注文ステータス</b></td>
-            <td><%= f.select :@order.status, Order.statuses.keys.map{ |key| [i18n.t("enums.order.status.#{key}"), key] }, {selected: 0} %></td>
-            <td><%= f.submit "更新", class: "btn btn-success" %></td>
+            <td><%= f.select :status, Order.statuses.keys.map{ |key| [I18n.t("enums.order.status.#{key}"), key] }, {selected: @order.status} %>
+                <%= f.submit "更新", class: "btn btn-success" %></td>
           </tr>
         </table>
       <% end %>
     </div>
 
-    <div class="col-9">
+    <div class="col-8">
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -44,24 +45,27 @@
 
         <tbody>
           <% @order_details.each do |order_detail| %>
-            <%= form_with model: order_detail, url: amin_order_detail_path, method: :patch do |f| %>
+            <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch do |f| %>
               <tr>
                 <td><%= order_detail.item.name %></td>
-                <td><%= order_detail.with_tax_price %></td>
+                <td><%= order_detail.price %></td>
                 <td><%= order_detail.amount %></td>
                 <td><%= order_detail.subtotal %></td>
                 <td>
-                  <%= f.select :@order_detail.cooking_status, OrderDetail.statuses.keys.map{ |key| [i18n.t("enums.order_detail.cooking_status.#{key}"), key] }, {selected: 0} %>
+                  <%= f.select :cooking_status, OrderDetail.cooking_statuses.keys.map{ |key| [I18n.t("enums.order_detail.cooking_status.#{key}"), key] }, {selected: order_detail.cooking_status} %>
+                  <%= f.hidden_field :order_detail_id, value: order_detail.id %>
                   <%= f.submit "更新", class: "btn btn-success" %>
                 </td>
               </tr>
+              <% @sum += order_detail.subtotal %>
             <% end %>
           <% end %>
         </tbody>
       </table>
+    </div>
 
-      <div class="col-2 offset-1">
-      <table>
+    <div class="col-3 offset-1">
+      <table class="table table-borderless mt-3">
         <tr>
           <td><b>商品合計</b></td>
           <td><%= "#{number_to_currency(@total, unit: "", precision: 0)}" %></td>
@@ -72,7 +76,10 @@
         </tr>
         <tr>
           <td><b>請求金額合計</b></td>
-          <td><%= "#{number_to_currency(@order.total_payment, unit: "", precision: 0)}" %></td>
+          <td>
+            <% @total_payment += @order.postage + @sum %>
+            <%= "#{number_to_currency(@order.total_payment, unit: "", precision: 0)}" %>
+          </td>
         </tr>
       </table>
       </div>
