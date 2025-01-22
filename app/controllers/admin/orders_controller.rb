@@ -4,7 +4,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @order.postage = 800
-    @total = @order_details.sum(:subtotal)
+    @total_payment = @order_details.sum(:subtotal)
     @order.total_payment = @order.postage + @total
   end
 

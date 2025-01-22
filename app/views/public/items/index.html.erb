@@ -1,28 +1,30 @@
-<h1>
-  商品一覧
-  <span style="font-size: 60%;">全<%= @items.count %>件</span>
-</h1>
+<div class="container justify-content-center">
+  <h1>
+    商品一覧
+    <span style="font-size: 60%;">全<%= @items.count %>件</span>
+  </h1>
 
-<div class="items-container">
-  <% @items.each do |item| %>
-    <div class="item">
-      <%= link_to item_path(item.id) do %>
-        <% if item.image.attaced? %>
-          <%= image_tag item.image, size: "200x200" %>
-        <% else %>
-          <%= image_tag 'no_image.jpg', size: "200x200" %>
+  <div class="row row-cols-4 p-3">
+    <% @items.each do |item| %>
+      <div class="col p-3">
+        <%= link_to item_path(item.id) do %>
+          <% if item.image.attaced? %>
+            <%= image_tag item.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
+          <% end %>
         <% end %>
-      <% end %>
-      <div class="item-details">
-        <div><%= item.name %></div>
-        <div><%= number_to_currency((item.price * 1.1).floor, unit: "￥", precision: 0) %></div>
+        <div class="item-details">
+          <div><%= item.name %></div>
+          <div><%= number_to_currency((item.price * 1.1).floor, unit: "￥", precision: 0) %></div>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="paginate">
-  <%= paginate @items %>
+  <div class="paginate">
+    <%= paginate @items %>
+  </div>
 </div>
 
 

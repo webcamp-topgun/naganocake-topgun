@@ -8,8 +8,8 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @cart_items = current_customer.cart_items
     @order.postage = 800
-    @payment_method = @order.payment_method
-    @address = @order.address
+    @sum = 0
+    @total_payment = 0
   end
 
   def complete

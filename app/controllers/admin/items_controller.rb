@@ -5,7 +5,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @cart_item = CartItem.new
   end
 
   def create
