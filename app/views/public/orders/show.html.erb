@@ -1,12 +1,12 @@
 <h1>注文履歴詳細</h1>
 <p>注文情報</p>
-  <table>
+<table class="table table-bordered">
     <tr>
       <th>
         注文日
       </th>
       <th>
-        <%= @order.updated.at %>
+        <%= @order.updated_at.strftime("%Y/%-m/%-d") %>
       </th>
     </tr>
     <tr>
@@ -24,7 +24,7 @@
         支払方法
       </td>
       <td>
-        <%= @ordr.payment_method %>
+        <%= @order.payment_method_i18n %>
       </td>
     </tr>
     <tr>
@@ -32,20 +32,20 @@
         ステータス
       </td>
       <td>
-        <%= @order.status %>
+        <%= @order.status_i18n %>
       </td>
     </tr>
   </table>
 
 
 <p>請求情報</p>
-<table>
+<table class="table table-bordered">
     <tr>
       <th>
         商品合計
       </th>
       <th>
-        
+        <%= number_to_currency(@sum, unit: "", precision: 0) %>
       </th>
     </tr>
     <tr>
@@ -61,14 +61,14 @@
         ご請求額
       </td>
       <td>
-        <%= @order.total_payment %>
+        <%= number_to_currency(@order.total_payment, unit: "", precision: 0) %>
       </td>
     </tr>
   </table>
 
 
 <p>注文内容</p>
-<table>
+<table class="table table-bordered">
     <tr>
       <th>
         商品
@@ -89,13 +89,13 @@
         <%= order_detail.item.name %>
       </td>
       <td>
-        <%= order_detail.item.with_tax_price %>
+        <%= number_to_currency(order_detail.item.with_tax_price, unit: "", precision: 0) %>
       </td>
       <td>
         <%= order_detail.amount %>
       </td>
       <td>
-        <%= order_detail.amount %>
+        <%= number_to_currency(order_detail.subtotal, unit: "", precision: 0) %>
       </td>
     </tr>
     <% end %>
