@@ -1,7 +1,7 @@
 <h1>注文情報確認</h1>
 <%= form_with model: @order,method: :post,url:orders_path do |f| %>
 
-<table>
+  <table class="table table-bordered">
  <thead>
   <tr>
     <th>
@@ -25,13 +25,13 @@
       <%= cart_item.item.name %>
     </td>
     <td>
-      <%= number_to_currency(cart_item.item.with_tax_price, unit: "￥", precision: 0) %>
+      <%= number_to_currency(cart_item.item.with_tax_price, unit: "", precision: 0) %>
     </td>
     <td>
       <%= cart_item.amount %>
     </td>
     <td>
-      <%= number_to_currency(cart_item.subtotal, unit: "￥", precision: 0) %>
+      <%= number_to_currency(cart_item.subtotal, unit: "", precision: 0) %>
     </td>
   </tr>
   <% @sum +=  cart_item.subtotal %>

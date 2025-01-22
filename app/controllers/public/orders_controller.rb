@@ -55,6 +55,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.postage = 800
     @order_details = @order.order_details
+    @sum = 0
+    @order.order_details.each do |order_detail|
+      @sum += order_detail.price * order_detail.amount
+    end
+    
   end
 
   private
