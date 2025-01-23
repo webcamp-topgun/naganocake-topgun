@@ -9,10 +9,6 @@ class Order < ApplicationRecord
     item.with_tax_price * amount
   end
 
-  def sum
-    
-  end
-
   def status_jp
     I18n.t("enums.order.status.#{status}")
   end
