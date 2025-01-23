@@ -1,10 +1,9 @@
 class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
   def update
-    @order = Order.find(params[:id])
-    @order_detail = @order.order_details.build(order_detail_params)
+    @order_detail = OrderDetail.find(params[:id])
     @order_detail.update(order_detail_params)
-    redirect_to admin_order_path(@order.id)
+    redirect_to admin_order_path(@order_detail.order.id)
   end
 
   private
