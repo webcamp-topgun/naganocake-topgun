@@ -8,7 +8,7 @@
         <table class="table table-borderless">
           <tr>
             <td><b>購入者</b></td>
-            <td><%= "#{@order.customer.last_name} #{@order.customer.first_name}" %></td>
+            <td><%= link_to "#{@order.customer.last_name} #{@order.customer.first_name}", admin_customer_path(@order.customer.id) %></td>
           </tr>
           <tr>
             <td><b>注文日</b></td>

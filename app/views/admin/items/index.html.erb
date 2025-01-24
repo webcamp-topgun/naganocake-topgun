@@ -1,34 +1,43 @@
-<h1>商品一覧</h1>
+<div class="container justify-content-center">
+  <div class="row">
+    <div class="col-10">
+      <h1>商品一覧</h1>
 
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= number_to_currency(item.price, unit: "", precision: 0) %></td>
-        <td><%= item.genre.name %></td>
-      <% if item.is_active %>
-        <td class="text-success">販売中</td>
-      <% else %>
-        <td class="text-danger">販売停止中</td>
-      <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, admin_item_path(item.id) %></td>
+              <td><%= number_to_currency(item.price, unit: "", precision: 0) %></td>
+              <td><%= item.genre.name %></td>
+            <% if item.is_active %>
+              <td class="text-success">販売中</td>
+            <% else %>
+              <td class="text-danger">販売停止中</td>
+            <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<div class="paginate">
-  <%= paginate @items %>
+  <div class="row">
+    <div class="col-10 offset-5 text-center">
+      <div class="pagination" style="font-size: 24px;">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
 </div>
-

@@ -24,10 +24,13 @@
         <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
 
-      <div class="paginate">
-        <%= paginate @orders %>
-      </div>
+  <div class="row">
+  <div class="col-10 offset-5 text-center">
+    <div class="pagination" style="font-size: 24px;">
+      <%= paginate @orders %>
     </div>
   </div>
 </div>
