@@ -1,9 +1,46 @@
-<p>
-ようこそ、ながのCAKEへ!<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。
-</p>
+<div class="container justify-cintent-center">
+  <div class="row">
+    <div class="col-lg-3"></div>
+       <div class="col-lg-6">
+         ようこそ、ながのCAKEへ!<br>
+         このサイトは、ケーキ販売のECサイトになります。<br>
+         会員でない方も商品の閲覧はできますが、<br>
+         購入には会員登録が必要になります。
+      </div>
+      </div>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
 
-<h1>新着商品</h1>
-<%= link_to '全ての商品を見る >', items_path %>
+   <div class="row">
+     <div class="col-lg-3"></div>
+     <div class="col-lg-9">
+       <h1 class="font-weight-bolder">新着商品</h1>
+     </div>
+   </div>
+   <div class="row row-cols-7">
+    <div class="col-lg-3"></div>
+     <% @items.each do |item| %>
+      <div class="col-lg-2 text-right">
+          <% if item.image.attaced? %>
+            <%= image_tag item.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
+          <% end %>
+        <div class="item-details">
+          <div><%= item.name %></div>
+          <div><%= number_to_currency((item.price * 1.1).floor, unit: "￥", precision: 0) %></div>
+        </div>
+      </div>
+     <% end %>
+   </div>
+
+
+   <div class="row">
+     <div class="col-lg-12">
+       <p class="text-right">
+       <%= link_to '全ての商品を見る >', items_path %>
+       </p>
+     </div>
+   </div>
+</div>
