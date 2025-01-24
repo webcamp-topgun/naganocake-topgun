@@ -1,13 +1,19 @@
+<div class="container">
 <% if flash[:success] %>
   <div class="alert alert-success">
     <%= flash[:success] %>
   </div>
 <% end %>
+<div class="row">
+<h3 class="bg-secondary">マイページ</h3>
+</div>
 
-<h1>マイページ</h1>
-<h2>登録情報</h2>
+<div class="row">
+<h3 class="font-weight-bolder">登録情報</h3>
 <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success" %>
+</div>
 
+<div class="row">
 <table border ="1">
   <tr>
     <td>氏名</td>
@@ -34,14 +40,18 @@
     <td><%= @customer.email %></td>
   </tr>
 </table>
+</div>
 
 
-
-<h2>配送先</h2>
+<div class="row">
+<h3 class="font-weight-bolder">配送先</h3>
 <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
+</div>
 
-<h2>注文一覧</h2>
+<div class="row">
+<h3 class="font-weight-bolder">注文一覧</h3>
 <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+</div>
 
-
+</div>
 
