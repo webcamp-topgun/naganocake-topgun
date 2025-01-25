@@ -5,7 +5,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-    @cart_item = CartItem.new
+    @item = Item.new
   end
 
   def create
@@ -16,6 +16,7 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    #税込み価格計算の定義
     @tax_include_price = (@item.price * 1.1).floor
   end
 

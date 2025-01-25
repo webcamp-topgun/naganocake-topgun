@@ -17,11 +17,12 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-        
+          <a class="navbar-brand" href="/"><%= image_tag('cake2.jpg',style: "height: 50px; width: 50px; filter: grayscale(100%)") %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
@@ -75,6 +76,13 @@
           </div>
         </div>
       </nav>
+      <div class="row">
+        <div class="col-2 offset-8">
+          <%= form_with url: root_path do |f| %>
+            <%= f.text_field :search, placeholder: "キーワード検索" %>
+          <% end %>
+        </div>
+      </div>
     </header>
     <main class="mb-auto">
     <%= yield %>

@@ -22,11 +22,13 @@
     <div class="col-lg-3"></div>
      <% @items.each do |item| %>
       <div class="col-lg-2 text-right">
+        <%= link_to item_path(item.id) do %>
           <% if item.image.attaced? %>
             <%= image_tag item.image, size: "200x200" %>
           <% else %>
             <%= image_tag 'no_image.jpg', size: "200x200" %>
           <% end %>
+        <% end %>
         <div class="item-details">
           <div><%= item.name %></div>
           <div><%= number_to_currency((item.price * 1.1).floor, unit: "￥", precision: 0) %></div>
