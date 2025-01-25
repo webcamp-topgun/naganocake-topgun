@@ -45,7 +45,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name_kana, :last_name_kana, :first_name, :last_name, :postal_code, :phone_number, :address])
   end
   
-
+  def after_sign_up_path_for(resource)
+    my_page_path # 遷移先のパスを指定
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
