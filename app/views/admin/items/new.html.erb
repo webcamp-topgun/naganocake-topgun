@@ -1,32 +1,38 @@
-<h1>商品新規登録</h1>
+<div class="container justify-content-center">
+  <div class="row">
+    <div class="col-10">
+      <h1>商品新規登録</h1>
 
-<%= form_with model: @item, url: admin_items_path do |f| %>
-  <div class="item-file">
-    <%= f.label :商品画像, style: "width: 80px;" %>
-    <%= f.file_field :image, accept: "image/*", include_blank: "ファイルを選択" %>
+      <%= form_with model: @item, url: admin_items_path do |f| %>
+        <div class="item-file">
+          <%= f.label :商品画像, style: "width: 80px;" %>
+          <%= f.file_field :image, accept: "image/*", include_blank: "ファイルを選択" %>
+        </div>
+        <div class="item-name">
+          <%= f.label :商品名, style: "width: 80px;" %>
+          <%= f.text_field :name, style: "width: 28ch;" %>
+        </div>
+        <div class="item-caption", style="display: flex; align-items: baseline;">
+          <%= f.label :商品説明, style: "width: 85px;" %>
+          <%= f.text_area :caption, style: "width: 28ch; height: 8em;" %>
+        </div>
+        <div class="item-genre" >
+          <%= f.label :ジャンル, style: "width: 80px;" %>
+          <%= f.select :genre_id, options_for_select(Genre.all.map{ |g| [g.name, g.id] }), { include_blank: "選択してください"}, {style: "width: 28ch;"} %>
+        </div>
+        <div class="item-price" >
+          <%= f.label :税抜価格, style: "width: 80px;" %>
+          <%= f.text_field :price, style: "width: 28ch;" %>円
+        </div>
+        <div class="item-status" >
+          <%= f.label :is_active, '販売ステータス' %>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active_true, '販売中' %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active_false, '販売停止中' %>
+        </div>
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
-  <div class="item-name">
-    <%= f.label :商品名, style: "width: 80px;" %>
-    <%= f.text_field :name, style: "width: 28ch;" %>
-  </div>
-  <div class="item-caption", style="display: flex; align-items: baseline;">
-    <%= f.label :商品説明, style: "width: 85px;" %>
-    <%= f.text_area :caption, style: "width: 28ch; height: 8em;" %>
-  </div>
-  <div class="item-genre" >
-    <%= f.label :ジャンル, style: "width: 80px;" %>
-    <%= f.select :genre_id, options_for_select(Genre.all.map{ |g| [g.name, g.id] }), { include_blank: "選択してください"}, {style: "width: 28ch;"} %>
-  </div>
-  <div class="item-price" >
-    <%= f.label :税抜価格, style: "width: 80px;" %>
-    <%= f.text_field :price, style: "width: 28ch;" %>円
-  </div>
-  <div class="item-status" >
-    <%= f.label :is_active, '販売ステータス' %>
-    <%= f.radio_button :is_active, :true %>
-    <%= f.label :is_active_true, '販売中' %>
-    <%= f.radio_button :is_active, :false %>
-    <%= f.label :is_active_false, '販売停止中' %>
-  </div>
-    <%= f.submit "新規登録", class: "btn btn-success" %>
-<% end %>
+</div>
