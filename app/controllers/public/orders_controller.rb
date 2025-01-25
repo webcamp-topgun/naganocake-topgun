@@ -2,6 +2,11 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
     @order = Order.new
+    if @order.save
+      redirect_to orders_confirm_path
+    else
+      render :new
+    end
   end
 
   def confirm
