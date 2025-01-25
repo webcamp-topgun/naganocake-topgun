@@ -9,16 +9,23 @@
     <h4 class="font-weight-bolder">支払方法</h4>
   </div>
 
-  <div class="row">
+
   <%= form_with model: @order,method: :post,url:orders_confirm_path do |f| %>
+  <div class="row">
+
     <div class="field">
     <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
     <%= f.label :address, Order.payment_methods_i18n[:credit_card] %>
+    </div>
   </div>
-  <div class="field"> 
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-    <%= f.label :address, Order.payment_methods_i18n[:transfer] %>
-  </div>
+  
+  <div class="row">
+
+    <div class="field"> 
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.label :address, Order.payment_methods_i18n[:transfer] %>
+    </div>
+
   </div>
 
   <div class="row">
