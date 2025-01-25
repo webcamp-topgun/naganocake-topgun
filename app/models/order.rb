@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
   validates :postal_code, presence: true
- 
+
 
   def subtotal
     item.with_tax_price * amount
