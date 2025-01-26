@@ -13,14 +13,14 @@
           <th>
             注文日
           </th>
-          <th>
+          <td>
             <%= @order.updated_at.strftime("%Y/%-m/%-d") %>
-          </th>
+          </td>
         </tr>
         <tr>
-          <td>
+          <th>
             配送先
-          </td>
+          </th>
           <td>
             <%= "〒" + @order.postal_code %><br>
             <%= @order.address %><br>
@@ -28,17 +28,17 @@
           </td>
         </tr>
         <tr>
-          <td>
+          <th>
             支払方法
-          </td>
+          </th>
           <td>
             <%= @order.payment_method_i18n %>
           </td>
         </tr>
         <tr>
-          <td>
+          <th>
             ステータス
-          </td>
+          </th>
           <td>
             <%= @order.status_i18n %>
           </td>
@@ -53,22 +53,22 @@
           <th>
             商品合計
           </th>
-          <th>
+          <td>
             <%= number_to_currency(@sum, unit: "", precision: 0) %>
-          </th>
+          </td>
         </tr>
         <tr>
-          <td>
+          <th>
             配送料
-          </td>
+          </th>
           <td>
             <%= @order.postage %>
           </td>
         </tr>
         <tr>
-          <td>
+          <th>
             ご請求額
-          </td>
+          </th>
           <td>
             <%= number_to_currency(@order.total_payment, unit: "", precision: 0) %>
           </td>
