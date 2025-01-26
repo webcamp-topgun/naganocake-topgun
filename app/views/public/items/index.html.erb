@@ -1,8 +1,10 @@
 <div class="container justify-content-center">
-  <h1>
-    商品一覧
-    <span style="font-size: 60%;">全<%= @items.count %>件</span>
-  </h1>
+  <div class="row mt-4">
+    <h1>
+      商品一覧
+      <span style="font-size: 60%;">全<%= @items.count %>件</span>
+    </h1>
+  </div>
 
   <div class="row row-cols-4 p-3">
     <% @items.each do |item| %>
