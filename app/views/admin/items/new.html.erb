@@ -1,8 +1,10 @@
 <div class="container justify-content-center">
-  <div class="row">
-    <div class="col-10">
-      <h1>商品新規登録</h1>
+  <div class="row mt-4">
+    <div class="col-3 text-center">
+      <h1 style="background-color: rgba(207, 247, 153, 1.0)">商品新規登録</h1>
+    </div>
 
+    <div class="col-10">
       <%= form_with model: @item, url: admin_items_path do |f| %>
         <div class="item-file">
           <%= f.label :商品画像, style: "width: 80px;" %>

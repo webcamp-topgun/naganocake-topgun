@@ -1,7 +1,9 @@
 <div class="container text-left">
-  <div class="row">
+  <div class="row mt-4">
+    <div class="col-5 text-center">
+      <h1 style="background-color: rgba(207, 247, 153, 1.0)">ジャンル一覧・追加</h1>
+    </div>
     <div class="col-9">
-      <h1>ジャンル一覧・追加</h1>
       <div style="margin: 20px 0;">
         <%= form_with model: @genre, url: admin_genres_path do |f| %>
           <span style="padding-right: 40px;"><%= f.label :ジャンル名 %> </span>

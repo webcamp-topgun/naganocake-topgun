@@ -1,8 +1,11 @@
 <div class="container justify-content-center">
-  <div class="row">
-    <div class="col-10 text-left pl-5">
-      <h1>注文履歴詳細</h1>
+  <div class="row mt-4">
+    <div class="col-3 text-center">
+      <h1 style="background-color: rgba(207, 247, 153, 1.0)">注文履歴詳細</h1>
     </div>
+  </div>
+
+  <div class="row">
     <div class="col-10 text-left">
       <%= form_with model: @order, url: admin_order_path(@order), method: :patch do |f| %>
         <table class="table table-borderless">
