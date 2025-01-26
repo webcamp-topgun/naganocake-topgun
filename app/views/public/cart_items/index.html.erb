@@ -1,14 +1,14 @@
 <div class='container justify-content-center'>
-  <div class='row'>
-    <div class="col-lg-2 bg-secondary">
+  <div class='row mt-4'>
+    <h3 class="col-lg-3" style="background-color: rgba(60, 60, 60, 0.3)">
       ショッピングカート
-    </div>
-    <div class="col-lg-8"></div>
+    </h3>
+    <div class="col-lg-7"></div>
     <div class="col-lg-2 text-right p-0">
       <%= link_to 'カートを空にする', cart_items_destroy_all_path,method: :delete, class: "btn btn-sm btn-danger" %>
     </div>
   </div>
-  <div class='row'>
+  <div class='row mt-4'>
       <table class='table table-bordered border-dark'>
        <thead class="table-secondary">
         <tr class="border border-dark">
