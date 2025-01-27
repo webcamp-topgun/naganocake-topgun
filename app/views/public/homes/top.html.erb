@@ -1,0 +1,49 @@
+<div class="container" style="height: 300px;">
+  <div class="row  justify-content-center">
+    <div class="col-12 text-center">
+      <img src="<%= asset_path('background.jpg') %>" class="img-fluid" style="height: 300px; width: 700px;" alt="background image">
+    </div>
+      <div class="col-3 text-center" style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); color: white; background-color: rgba(60, 60, 60, 0.7); padding: 10px;">
+         <p>ようこそ、ながのCAKEへ!<br>
+         このサイトは、ケーキ販売のECサイトになります。<br>
+         会員でない方も商品の閲覧はできますが、<br>
+         購入には会員登録が必要になります。</p>
+      </div>
+      </div>
+    <div class="col-lg-3"></div>
+  </div>
+
+   <div class="row">
+     <div class="col-lg-3"></div>
+     <div class="col-lg-9">
+       <h1 class="font-weight-bolder">新着商品</h1>
+     </div>
+   </div>
+   <div class="row row-cols-7">
+    <div class="col-lg-3"></div>
+     <% @items.each do |item| %>
+      <div class="col-lg-2 text-right">
+        <%= link_to item_path(item.id) do %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x200" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: "200x200" %>
+          <% end %>
+        <% end %>
+        <div class="item-details">
+          <div><%= item.name %></div>
+          <div><%= number_to_currency((item.price * 1.1).floor, unit: "￥", precision: 0) %></div>
+        </div>
+      </div>
+     <% end %>
+   </div>
+
+
+   <div class="row">
+     <div class="col-lg-12">
+       <p class="text-right">
+       <%= link_to '全ての商品を見る >', items_path %>
+       </p>
+     </div>
+   </div>
+</div>

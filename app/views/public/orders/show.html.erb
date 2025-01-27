@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-lg-3 offset-2">
+     <h3 class="text-center" style="background-color: rgba(207, 247, 153, 1.0)">注文履歴詳細</h3>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-8">
+      <p class="font-weight-bolder">注文情報</p>
+      <table class="table table-bordered">
+        <tr>
+          <th>
+            注文日
+          </th>
+          <td>
+            <%= @order.updated_at.strftime("%Y/%-m/%-d") %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            配送先
+          </th>
+          <td>
+            <%= "〒" + @order.postal_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            支払方法
+          </th>
+          <td>
+            <%= @order.payment_method_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            ステータス
+          </th>
+          <td>
+            <%= @order.status_i18n %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-lg-4">
+      <p class="font-weight-bolder">請求情報</p>
+      <table class="table table-bordered">
+        <tr>
+          <th>
+            商品合計
+          </th>
+          <td>
+            <%= number_to_currency(@sum, unit: "", precision: 0) %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            配送料
+          </th>
+          <td>
+            <%= @order.postage %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            ご請求額
+          </th>
+          <td>
+            <%= number_to_currency(@order.total_payment, unit: "", precision: 0) %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-9">
+      <p class="font-weight-bolder">注文内容</p>
+      <table class="table table-bordered">
+        <tr>
+          <th>
+            商品
+          </th>
+          <th>
+            単価（税込）
+          </th>
+          <th>
+            個数
+          </th>
+          <th>
+            小計
+          </th>
+        </tr>
+        <% @order_details.each do |order_detail| %>
+        <tr>
+          <td>
+            <%= order_detail.item.name %>
+          </td>
+          <td>
+            <%= number_to_currency(order_detail.item.with_tax_price, unit: "", precision: 0) %>
+          </td>
+          <td>
+            <%= order_detail.amount %>
+          </td>
+          <td>
+            <%= number_to_currency(order_detail.subtotal, unit: "", precision: 0) %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>
