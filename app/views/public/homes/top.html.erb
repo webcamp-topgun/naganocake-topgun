@@ -24,7 +24,7 @@
      <% @items.each do |item| %>
       <div class="col-lg-2 text-right">
         <%= link_to item_path(item.id) do %>
-          <% if item.image.attaced? %>
+          <% if item.image.attached? %>
             <%= image_tag item.image, size: "200x200" %>
           <% else %>
             <%= image_tag 'no_image.jpg', size: "200x200" %>
